@@ -5,7 +5,7 @@ Trabajaremos en varias Fases:
 
 FASE 1.- ANALISIS DEL CODIGO BASE
 
-
+FASE 3 - NUEVA FUNCIONALIDAD
 ____________________________________________________________________________________
 FASE 1.- ANALISIS DEL CODIGO BASE
 
@@ -33,3 +33,26 @@ Dibujar el DIAGRAMA DE FLUJO del MENÚ  EN CONSOLA. En papel o por, ejemplo en m
   - Marcar evento como completado
   - Salir
 ____________________________________________________________________________________
+
+FASE 3 - NUEVA FUNCIONALIDAD
+
+Objetivo
+Añadir una nueva funcionalidad a la aplicación de eventos que implique modificar tanto la lógica existente como la interfaz gráfica. 
+La finalidad es que seáis capaces de integrar cambios en la estructura del programa, manteniendo la división de responsabilidades y la conexión entre GUI y lógica.
+
+Enunciado
+Elegir una funcionalidad adicional que aporte valor a la aplicación. Debe implicar cambios en:
+
+  - El código base: nuevas propiedades en las clases Evento o GestorEventos, nuevos métodos, lógica de filtrado o cálculo.
+  - La interfaz gráfica: nuevos botones, campos, menús, diálogos o elementos de interacción con el usuario.
+
+Algunas ideas de funcionalidades que podéis implementar:
+
+  - Filtrar tareas por fecha: añadir un selector de fechas en la interfaz y filtrar los eventos que se muestran según el rango seleccionado.
+  - Campo de fecha en la lógica: que cada evento tenga una fecha asociada y usar un DatePicker en la GUI para crear o modificar eventos.
+  - Menú adicional en la ventana principal: opciones como "Mostrar próximos eventos", "Exportar lista de eventos" o "Ordenar eventos por tipo/fecha".
+  - Prioridad de eventos: permitir marcar eventos con distintos niveles de prioridad y mostrarla visualmente en la interfaz.
+
+Podéis combinar varias ideas o proponer otra que consideréis interesante, siempre que implique cambios en **código base y GUI**.
+
+Se ha implementado prioridad. 

@@ -5,6 +5,7 @@ Trabajaremos en varias Fases:
 
 FASE 1.- ANALISIS DEL CODIGO BASE
 
+FASE 2 - INTERFAZ GRÁFICA
 
 ____________________________________________________________________________________
 FASE 1.- ANALISIS DEL CODIGO BASE
@@ -32,4 +33,26 @@ Dibujar el DIAGRAMA DE FLUJO del MENÚ  EN CONSOLA. En papel o por, ejemplo en m
   - Eliminar evento
   - Marcar evento como completado
   - Salir
-____________________________________________________________________________________
+___________________________________________________________________________________________________________________________
+
+FASE 2 - INTERFAZ GRÁFICA
+
+Objetivo
+En esta fase vais a implementar la versión completa de la aplicación de gestión de eventos utilizando JavaFX. El objetivo es que conectéis la lógica ya existente con una interfaz gráfica interactiva, aplicando todo lo aprendido sobre herencia, polimorfismo, interfaces y ArrayList.
+
+Enunciado
+Partiendo del código base trabajado en la FASE 1 y teniendo en cuenta los diagramas de clases y flujo que creasteis en esa fase, debéis construir la interfaz gráfica que permita al usuario:
+  - Añadir un evento (trabajo, personal o formación)
+  - Listar los eventos existentes
+  - Eliminar un evento
+  - Marcar un evento como completado
+  - Reflexiona sobre cómo organizar tu código. Una estrategia recomendable es crear tres clases relacionadas con la GUI, por ejemplo:
+
+Una clase que gestione la **ventana principal y el menú** de opciones
+ - Una clase que se encargue de **los diálogos o formularios para introducir datos de eventos**
+ - Una clase de **utilidades GUI**, para mostrar mensajes de error, alertas o validar entradas
+ - La división de clases no es obligatoria exactamente como se propone, pero ayuda a mantener el código limpio y a separar responsabilidades.
+
+Cada botón, formulario o acción de la interfaz debe llamar a la lógica ya implementada en GestorEventos y las clases Evento/subclases, sin modificar la lógica interna de estas.
+
+____________________________________________________________________________________________________________________________

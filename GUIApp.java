@@ -7,18 +7,17 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class GUIApp {
+public class GUIApp extends Application {
     
     /**
-     *  Creamos el gestor para que sea accesible en toda la clase
+     *  Creamos el gestor aquí para que sea accesible en toda la clase
      */
     private GestorEventos gestor = new GestorEventos();
     private ListView<Evento> vistaLista = new ListView<>();
-    private BorderPane raiz; // Atributo para que el contenido persista en la memoria para que lo pueda devolver a Pincipal cuando lo necesite
 
-    // Hago una constructora
-    public GUIApp() {
-        // --- ZONA DERECHA ---
+    @Override
+    public void start(Stage ventana) {
+        // --- ZONA CENTRAL ---
         VBox zonaDerecha = new VBox(10);
         zonaDerecha.setAlignment(Pos.CENTER);
         zonaDerecha.getChildren().add(new Label("Detalles del Evento"));
@@ -65,15 +64,17 @@ public class GUIApp {
         botonera.setStyle("-fx-padding: 15;");
 
         // --- LAYOUT PRINCIPAL ---
-        this.raiz = new BorderPane();
-        this.raiz.setCenter(zonaCentral);
-        this.raiz.setBottom(botonera);
+        BorderPane raiz = new BorderPane();
+        raiz.setCenter(zonaCentral);
+        raiz.setBottom(botonera);
 
+        ventana.setScene(new Scene(raiz, 700, 500));
+        ventana.setTitle("Gestor de Eventos");
+        ventana.show();
     }
 
     /**
      * Crea la nueva ventana
-     * Ventana de formulario para el usuario
      */
     private void abrirVentanaFormulario() {
         Stage nuevaVentana = new Stage();
@@ -89,10 +90,6 @@ public class GUIApp {
         ComboBox<String> comboTipo = new ComboBox<>();
         comboTipo.getItems().addAll("Trabajo", "Personal", "Formación");
         comboTipo.setPromptText("Selecciona tipo");
-        
-        ComboBox<String> comboPrioridad = new ComboBox<>();
-        comboPrioridad.getItems().addAll("😱", "🤷", " 🐢");
-        comboPrioridad.setPromptText("Grado de Procrastinación");
 
         TextField txtDetalleVariable = new TextField();
         txtDetalleVariable.setPromptText("Dato específico...");
@@ -104,15 +101,14 @@ public class GUIApp {
             String t = txtTitulo.getText();
             String f = txtFecha.getText();
             String det = txtDetalleVariable.getText();
-            String prisaQLlevas = comboPrioridad.getValue();
 
-            
+            // Usamos tus clases del PDF
             if ("Trabajo".equals(comboTipo.getValue())) {
-                nuevo = new EventoTrabajo(t, f, prisaQLlevas, det);
+                nuevo = new EventoTrabajo(t, f, det);
             } else if ("Personal".equals(comboTipo.getValue())) {
-                nuevo = new EventoPersonal(t, f,prisaQLlevas, det);
+                nuevo = new EventoPersonal(t, f, det);
             } else if ("Formación".equals(comboTipo.getValue())) {
-                nuevo = new EventoFormacion(t, f, prisaQLlevas, Integer.parseInt(det));
+                nuevo = new EventoFormacion(t, f, Integer.parseInt(det));
             }
 
             if (nuevo != null) {
@@ -123,7 +119,7 @@ public class GUIApp {
             }
         });
 
-        VBox layout = new VBox(10, new Label("Nuevo Evento"), txtTitulo, txtFecha, comboTipo, txtDetalleVariable, comboPrioridad, btnGuardar);
+        VBox layout = new VBox(10, new Label("Nuevo Evento"), txtTitulo, txtFecha, comboTipo, txtDetalleVariable, btnGuardar);
         layout.setStyle("-fx-padding: 20;");
         
         nuevaVentana.setScene(new Scene(layout, 300, 350));
@@ -135,19 +131,14 @@ public class GUIApp {
         vistaLista.getItems().setAll(gestor.listarEventos());
     }
 
-    // Alerta de errores
+    // Alerta sencilla para errores
     private void mostrarAlerta(String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
         alerta.setContentText(mensaje);
         alerta.show();
     }
-    
-    /**
-     * Este método permite que la clase Principal obtenga el diseño 
-     * completo para ponerlo dentro de la ventana.
-     */
-    public BorderPane getRaiz() {
-        return raiz;
-    }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
